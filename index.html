@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Validation</title>
+        <link rel="stylesheet" href="./sass/form-validation/form-validation.css">
+    </head>
+    <body>
+        <div class="main-form"> 
+
+            <form action="" method="POST" class="form" id="form-1">
+                <h3 class="heading">Form Validation</h3>
+            
+                <div class="spacer"></div>
+        
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Name</label>
+                    <input id="fullname" name="fullname" type="text" placeholder="Họ và tên" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+            
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+            
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input id="password" name="password" type="password" placeholder="Mật khẩu" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+            
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">Repeat Password</label>
+                    <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="form-label">Address </label>
+                    <select id="address" name="address" class="form-control">
+                        <option value="">Choose Adress</option>
+                        <option value="hcm">Ho Chi Minh</option>
+                        <option value="hni">Ha Noi</option>
+                        <option value="dl47">DakLak</option>
+                    </select>
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">Gender</label>
+                    <div class="input-flex">
+                        <div class="form-radio">
+                            <input name="gender" type="checkbox" value="male" class="form-control">
+                            <p>Nam</p>
+                        </div>
+                        <div class="form-radio">
+                            <input name="gender" type="checkbox" value="female" class="form-control">
+                            <p>Nữ</p>
+                        </div>
+                        <div class="form-radio">
+                            <input name="gender"  type="checkbox" value="other" class="form-control">
+                            <p>Khác</p>
+                        </div>
+                    </div>
+                    <span class="form-message"></span>
+                </div>
+            
+                <button class="form-submit">Submit</button>
+            </form>
+        
+        </div>
+        <script src="./js/form-validation.js"></script>
+        <script>
+            Validator({
+                form: '#form-1',
+                formGroupSelector: '.form-group',
+                errorSelector: '.form-message',
+                rules: [
+                    Validator.isRequired('#fullname', 'Nhập tên đầy đủ của bạn'),
+                    Validator.isEmail('#email'),
+                    Validator.minLength('#password', 6),
+                    Validator.isRequired('input[name="gender"]'),
+                    Validator.isRequired('#address', 'Vui lòng chọn địa chỉ'),
+                    Validator.isConfirmed('#password_confirmation', function() {
+                        return document.querySelector('#form-1 #password').value;
+                    }, 'Mật khẩu nhập lại không khớp'),
+                ],
+                onSubmit: function (data) {
+                    console.log(data)
+                }  
+            })
+        </script>
+    </body>
+</html>

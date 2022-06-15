@@ -1,0 +1,135 @@
+
+$blue: #00BED6;
+$text: #505050;
+$textbold: #231F20;
+$pink: #F44C7F;
+$orage: #F28500;
+$gray: #D1D1D1;
+$white: #ffffff;
+$bg-main: #D1D1D180;
+// PC 1920px
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    touch-action: manipulation;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+input {
+    color: $text;
+    margin-bottom: 0;
+}
+
+.unshow {
+    display: none;
+}
+
+.main-btn {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    color: $white;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    font-weight: 700;
+}
+
+.btn-prev {
+    background: #D1D1D1;
+}
+
+.btn-next {
+    background: $blue;
+    transition: all .4s ease-in-out;
+    background-size: 300% 100%;
+    &:hover {
+        background-position: 100% 0;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+        background-image: linear-gradient(to right, #3f86ed, $blue, #4481eb, $blue);
+    }
+}
+
+.btn-add-guest {
+    background: $pink;
+}
+
+.btn-view-invoice {
+    background: $blue;
+}
+
+.btn-request {
+    background: $orage;
+}
+.error {
+    box-shadow: inset 0px 0px 8px #ff0000 !important;
+}
+// form custom 
+.form-field {
+    position: relative;
+    margin-bottom: 20px;
+    .form-input {
+        margin-bottom: 0 !important;
+        transition: .5s all;
+        border: 1px solid #fff;
+        &:focus {
+            border: 1px solid $blue !important;
+        }
+    }
+    label {
+        position: absolute;
+        color: #A7A7A7;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+        margin-bottom: 0;
+        font-size: 14px;
+        pointer-events: none;
+        user-select: none;
+        transition: .5s all;
+        font-weight: 600;
+    }
+    .form-input:not(:placeholder-shown)+label,
+    .form-input:focus+label {
+        top: 0;
+        left: 15px;
+        background: #fff;
+        display: inline-block;
+        padding: 0 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        color: $blue;
+        font-weight: 600;
+    }
+}
+
+.bg-overlay {
+    background: #50505080;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    position: absolute;
+    display: none;
+    transition: .5s all;
+    &.active {
+        display: block;
+    }
+}
